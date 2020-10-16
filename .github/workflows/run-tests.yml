@@ -1,8 +1,0 @@
-name: run-test
-on: [push]
-jobs:
-  check-actions:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ls -al
