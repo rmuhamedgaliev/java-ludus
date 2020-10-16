@@ -1,8 +1,0 @@
-addons:
-  sonarcloud:
-    organization: "rmuhamedgaliev"
-    token:
-      secure: "oDjyukrsAN6sKTI4k5wxJkNXcg1f4NO6yaun32OEbPQXl+0cq3bgasLzfmDKIKQ6akuOZqEGT8yv7xl+jZJD6d8MxdWyejoGRBOVjfRpO5zhldbPmUoBgH5KZDH0luJEwBW6Y6PX+KFvMb+fM7UiQM31iuZjRtvJ0viZl7Hx7caUoR9ILqrNsc/65GdITJGoqPfle9h04z/bnxItXx2CcqPhOW9EI9k9ntsdeLYRvbM0VNpbfAdrbnO2E4L2KlDEUEv4Rp/OqcxT7OM5/eU+g+8GpP2t78H9ZOU8MtpIFhzvq4IPEaG7v0AkTQdNPAzCPPAC17hDUGEmk/DpAiODjlCCYebjzIuwyhKf8SmHeDpzAB5yDiZfcLctGAo3aW0vQ2bkwnzy5p5c0XbsrWPd9OMoO9/5UTY/sp3V5FHtM7du5yKo6qLiTc/1BUysUBTp6gnkvryvVrpiI7vZCeOxbZSIlQzgks2Suegrkw4GTsMqJ6rLFCcxK6K2En1nkh//nHROmAdO1/5iTeiJYs3Q7sUTCbbnfqODhlM6+dym0c4MH3P/kCn4mKcnj8jQxdG6UchK4V5gxg/RpM3dmnnKDBHHVxlpN6BYoZjEFvlbT3RM0gnw48h2iWSHrDnd5tBPp+oyAormJsc/pFDaLT+DjNdnlG8ZoaewnaQWIE/Rp/k="
-
-script:
-  - sonar-scanner
