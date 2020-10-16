@@ -2,4 +2,5 @@
 
 Репозиторий для различных экспериментов по Java разработке
 
-- [Gradle](./gradle/README.md) - работа с системой сборки Gradle
+- [Gradle](./gradle/README.md) - работа с системой сборки Gradle.
+- [LeetCode](./leetcode/README.md) - для решений задач на [LeetCode](https://leetcode.com).
