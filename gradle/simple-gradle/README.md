@@ -57,7 +57,7 @@ tasks.test {
 ## Зависимости
 
 | Название | Назначение | 
-|:---|---:|
+|---|---|
 | implementation | extends compile. Implementation only dependencies. |
 | compileOnly | Compile time only dependencies, not used at runtime. |
 | compileClasspath | extends compile, compileOnly, implementation. Compile classpath, used when compiling source. Used by task compileJava. |
