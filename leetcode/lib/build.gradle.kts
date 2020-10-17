@@ -1,6 +1,3 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat.*
-import org.gradle.api.tasks.testing.logging.TestLogEvent.*
-
 plugins {
     `java-library`
 }
@@ -11,6 +8,9 @@ repositories {
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testImplementation("org.openjdk.jmh:jmh-generator-annprocess:1.26")
+    testImplementation("org.openjdk.jmh:jmh-core:1.26")
+
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
