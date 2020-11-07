@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="MLService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:tns="http://tempuri.org/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl">
+    <wsp:Policy wsu:Id="BasicHttpBinding_IService_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <http:BasicAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import
+                    namespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+            <xs:import
+                    namespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+            <xs:element name="Create">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="q1:CreateRequest"
+                                    xmlns:q1="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateResult" nillable="true" type="q2:CreateResponse"
+                                    xmlns:q2="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Update">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="q3:UpdateRequest"
+                                    xmlns:q3="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateResult" nillable="true" type="q4:UpdateResponse"
+                                    xmlns:q4="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Delete">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="q5:DeleteRequest"
+                                    xmlns:q5="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteResult" nillable="true" type="q6:DeleteResponse"
+                                    xmlns:q6="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetMetaData">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetMetaDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetMetaDataResult" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Get">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="q7:GetRequest"
+                                    xmlns:q7="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetResult" nillable="true" type="q8:GetResponse"
+                                    xmlns:q8="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetChildElement">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" nillable="true" type="q9:GetChildElementRequest"
+                                    xmlns:q9="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetChildElementResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetChildElementResult" nillable="true"
+                                    type="q10:GetChildElementResponse"
+                                    xmlns:q10="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+            <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+            <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+            <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+            <xs:element name="byte" nillable="true" type="xs:byte"/>
+            <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+            <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+            <xs:element name="double" nillable="true" type="xs:double"/>
+            <xs:element name="float" nillable="true" type="xs:float"/>
+            <xs:element name="int" nillable="true" type="xs:int"/>
+            <xs:element name="long" nillable="true" type="xs:long"/>
+            <xs:element name="QName" nillable="true" type="xs:QName"/>
+            <xs:element name="short" nillable="true" type="xs:short"/>
+            <xs:element name="string" nillable="true" type="xs:string"/>
+            <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+            <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+            <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+            <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+            <xs:element name="char" nillable="true" type="tns:char"/>
+            <xs:simpleType name="char">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:element name="duration" nillable="true" type="tns:duration"/>
+            <xs:simpleType name="duration">
+                <xs:restriction base="xs:duration">
+                    <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                    <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+                    <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="guid" nillable="true" type="tns:guid"/>
+            <xs:simpleType name="guid">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute name="FactoryType" type="xs:QName"/>
+            <xs:attribute name="Id" type="xs:ID"/>
+            <xs:attribute name="Ref" type="xs:IDREF"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified"
+                   targetNamespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Request"
+                   xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:import namespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Models"/>
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xs:complexType name="CreateRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseRequest">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="CreateRequest" nillable="true" type="tns:CreateRequest"/>
+            <xs:complexType name="BaseRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Attributes" nillable="true" type="q1:ArrayOfAttributeKeyValuePair"
+                                xmlns:q1="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Models"/>
+                    <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="BaseRequest" nillable="true" type="tns:BaseRequest"/>
+            <xs:complexType name="UpdateRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="UpdateRequest" nillable="true" type="tns:UpdateRequest"/>
+            <xs:complexType name="DeleteRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                    <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="DeleteRequest" nillable="true" type="tns:DeleteRequest"/>
+            <xs:complexType name="GetRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                            <xs:element minOccurs="0" name="Skip" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Take" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="GetRequest" nillable="true" type="tns:GetRequest"/>
+            <xs:complexType name="GetChildElementRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                            <xs:element minOccurs="0" name="Skip" type="xs:int"/>
+                            <xs:element minOccurs="0" name="Take" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="GetChildElementRequest" nillable="true" type="tns:GetChildElementRequest"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified"
+                   targetNamespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Models"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Models">
+            <xs:complexType name="ArrayOfAttributeKeyValuePair">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="AttributeKeyValuePair" nillable="true"
+                                type="tns:AttributeKeyValuePair"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfAttributeKeyValuePair" nillable="true" type="tns:ArrayOfAttributeKeyValuePair"/>
+            <xs:complexType name="AttributeKeyValuePair">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="AttributeKeyValuePair" nillable="true" type="tns:AttributeKeyValuePair"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified"
+                   targetNamespace="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://schemas.datacontract.org/2004/07/Manzana.Loyalty.Service.Core.Contract.Response"
+                   xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xs:complexType name="CreateResponse">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="CreateResponse" nillable="true" type="tns:CreateResponse"/>
+            <xs:complexType name="BaseResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="ErrorCode" type="xs:int"/>
+                    <xs:element minOccurs="0" name="LogId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="BaseResponse" nillable="true" type="tns:BaseResponse"/>
+            <xs:complexType name="UpdateResponse">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="UpdateResponse" nillable="true" type="tns:UpdateResponse"/>
+            <xs:complexType name="DeleteResponse">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseResponse">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="DeleteResponse" nillable="true" type="tns:DeleteResponse"/>
+            <xs:complexType name="GetResponse">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                            <xs:element minOccurs="0" name="TableData" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="GetResponse" nillable="true" type="tns:GetResponse"/>
+            <xs:complexType name="GetChildElementResponse">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:BaseResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="EntityId" type="ser:guid"/>
+                            <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string"/>
+                            <xs:element minOccurs="0" name="TableData" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="GetChildElementResponse" nillable="true" type="tns:GetChildElementResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="IService_Create_InputMessage">
+        <wsdl:part name="parameters" element="tns:Create"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Create_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Update_InputMessage">
+        <wsdl:part name="parameters" element="tns:Update"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Update_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Delete_InputMessage">
+        <wsdl:part name="parameters" element="tns:Delete"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Delete_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetMetaData_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetMetaData"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetMetaData_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetMetaDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Get_InputMessage">
+        <wsdl:part name="parameters" element="tns:Get"/>
+    </wsdl:message>
+    <wsdl:message name="IService_Get_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetChildElement_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetChildElement"/>
+    </wsdl:message>
+    <wsdl:message name="IService_GetChildElement_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetChildElementResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IService">
+        <wsdl:operation name="Create">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/Create" message="tns:IService_Create_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateResponse"
+                         message="tns:IService_Create_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Update">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/Update" message="tns:IService_Update_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateResponse"
+                         message="tns:IService_Update_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Delete">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/Delete" message="tns:IService_Delete_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteResponse"
+                         message="tns:IService_Delete_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetMetaData">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMetaData"
+                        message="tns:IService_GetMetaData_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMetaDataResponse"
+                         message="tns:IService_GetMetaData_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Get">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/Get" message="tns:IService_Get_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/GetResponse"
+                         message="tns:IService_Get_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetChildElement">
+            <wsdl:input wsaw:Action="http://tempuri.org/IService/GetChildElement"
+                        message="tns:IService_GetChildElement_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IService/GetChildElementResponse"
+                         message="tns:IService_GetChildElement_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
+        <wsp:PolicyReference URI="#BasicHttpBinding_IService_policy"/>
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Create">
+            <soap:operation soapAction="http://tempuri.org/IService/Create" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Update">
+            <soap:operation soapAction="http://tempuri.org/IService/Update" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Delete">
+            <soap:operation soapAction="http://tempuri.org/IService/Delete" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetMetaData">
+            <soap:operation soapAction="http://tempuri.org/IService/GetMetaData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Get">
+            <soap:operation soapAction="http://tempuri.org/IService/Get" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetChildElement">
+            <soap:operation soapAction="http://tempuri.org/IService/GetChildElement" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MLService">
+        <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
+            <soap:address location="http://sup01web19.manzanagroup.ru:8558/MLService.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
