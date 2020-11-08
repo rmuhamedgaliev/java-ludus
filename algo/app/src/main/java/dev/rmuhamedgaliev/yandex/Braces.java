@@ -1,43 +1,73 @@
 package dev.rmuhamedgaliev.yandex;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Queue;
 
 public class Braces {
 
-    public static void main(String[] args) {
+    private static final String FILE_INPUT = "input.txt";
 
-        try (
-            BufferedReader br = new BufferedReader(
-                new InputStreamReader(System.in)
-            );
-        )
-        {
-            int countOfBraces = Integer.parseInt(br.readLine());
+    private static final String FILE_OUTPUT = "output.txt";
 
-            ArrayDeque<Character> queue = new ArrayDeque<>();
+    private static BufferedReader bufferedReader = null;
 
-            for (int i = 0; i < countOfBraces; i++) {
+    private static BufferedWriter bufferedWriter = null;
 
-                if (queue.size() == 0) {
-                    queue.addFirst('(');
-                    continue;
-                }
+    public static void main(String[] args) throws Exception {
+        init();
+        run();
+        close();
+    }
 
-                if (queue.peekFirst() == '(') {
-                    queue.addFirst(')');
-                } else {
-                    queue.addFirst('(');
-                }
-            }
+    private static void init() throws IOException {
+        bufferedReader = new BufferedReader(new FileReader(FILE_INPUT));
+        bufferedWriter = new BufferedWriter(new FileWriter(FILE_OUTPUT));
+    }
 
-            queue.forEach(System.out::print);
+    private static void close() throws IOException {
+        bufferedWriter.close();
+        bufferedReader.close();
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+    private static int readLine() throws IOException {
+        return Integer.parseInt(bufferedReader.readLine());
+    }
+
+    private static void writeLine(char[] IntToFile) throws IOException {
+        bufferedWriter.write(IntToFile);
+        bufferedWriter.newLine();
+    }
+
+    private static void run() throws IOException {
+        int n = readLine() * 2;
+        if (n < 2) return;
+        char[] chrs = new char[n];
+        for (int i = 0; i < n / 2; i++) {
+            chrs[i] = '(';
         }
+        for (int i = n / 2; i < n; i++) {
+            chrs[i] = ')';
+        }
+        writeLine(chrs);
+        do {
+            int i = n - 1;
+            int c = 0;
+            while (i >= 0) {
+                c += chrs[i] == ')' ? -1 : 1;
+                if ((c < 0) && (chrs[i] == '(')) break;
+                --i;
+            }
+            if (i < 0) break;
+
+            chrs[i++] = ')';
+            int ind = i;
+            for (; i < n; i++) {
+                chrs[i] = (i <= (n - ind + c) / 2 + ind) ? '(' : ')';
+            }
+            writeLine(chrs);
+        } while (true);
     }
 }
