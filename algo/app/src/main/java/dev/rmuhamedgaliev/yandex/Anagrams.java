@@ -6,10 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Braces {
+public class Anagrams {
 
     private static final String FILE_INPUT = "input.txt";
-
 
     private static final String FILE_OUTPUT = "output.txt";
 
@@ -33,42 +32,40 @@ public class Braces {
         bufferedReader.close();
     }
 
-    private static int readLine() throws IOException {
-        return Integer.parseInt(bufferedReader.readLine());
+    private static String readLine() throws IOException {
+        return bufferedReader.readLine();
     }
 
-    private static void writeLine(char[] IntToFile) throws IOException {
-        bufferedWriter.write(IntToFile);
+    private static void writeLine(char ch) throws IOException {
+        bufferedWriter.write(ch);
         bufferedWriter.newLine();
     }
 
     private static void run() throws IOException {
-        int n = readLine() * 2;
-        if (n < 2) return;
-        char[] chrs = new char[n];
-        for (int i = 0; i < n / 2; i++) {
-            chrs[i] = '(';
-        }
-        for (int i = n / 2; i < n; i++) {
-            chrs[i] = ')';
-        }
-        writeLine(chrs);
-        do {
-            int i = n - 1;
-            int c = 0;
-            while (i >= 0) {
-                c += chrs[i] == ')' ? -1 : 1;
-                if ((c < 0) && (chrs[i] == '(')) break;
-                --i;
-            }
-            if (i < 0) break;
 
-            chrs[i++] = ')';
-            int ind = i;
-            for (; i < n; i++) {
-                chrs[i] = (i <= (n - ind + c) / 2 + ind) ? '(' : ')';
+        String s = readLine();
+        String s1 = readLine();
+        if (s1.equals(s)) {
+            writeLine('1');
+            return;
+        }
+        if (s1.length() != s.length()) {
+            writeLine('0');
+            return;
+        }
+        int[] alf = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            alf[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < s1.length(); i++) {
+            alf[s1.charAt(i) - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (alf[i] != 0) {
+                writeLine('0');
+                return;
             }
-            writeLine(chrs);
-        } while (true);
+        }
+        writeLine('1');
     }
 }
