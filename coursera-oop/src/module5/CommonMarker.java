@@ -19,7 +19,7 @@ public abstract class CommonMarker extends SimplePointMarker {
 		super(location);
 	}
 	
-	public CommonMarker(Location location, java.util.HashMap<java.lang.String,java.lang.Object> properties) {
+	public CommonMarker(Location location, java.util.HashMap<String, Object> properties) {
 		super(location, properties);
 	}
 	

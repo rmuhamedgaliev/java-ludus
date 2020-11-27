@@ -95,6 +95,15 @@ public abstract class EarthquakeMarker extends CommonMarker
 	{
 		// TODO: Implement this method
 		
+		pg.fill(255, 255, 255);
+		pg.rect(x - 5, y - 15, pg.textWidth(getTitle())+5, 20);
+		
+		pg.fill(0, 0, 0);
+		
+		pg.text(getTitle(), x, y);
+		
+		
+		
 	}
 
 	

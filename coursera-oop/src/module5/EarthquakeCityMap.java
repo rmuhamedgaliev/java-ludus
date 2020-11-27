@@ -41,7 +41,7 @@ public class EarthquakeCityMap extends PApplet {
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
 	
 	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+	private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
 	
 	// The files containing city names and info and country names and info
 	private String cityFile = "city-data.json";
@@ -146,6 +146,17 @@ public class EarthquakeCityMap extends PApplet {
 	private void selectMarkerIfHover(List<Marker> markers)
 	{
 		// TODO: Implement this method
+		for (Marker marker: markers) {
+			if (marker.isInside(map, mouseX, mouseY) && lastSelected == null) {
+				lastSelected = (CommonMarker)marker;
+				lastSelected.setSelected(true);
+				
+				System.out.println(lastSelected.getProperty("name"));
+			}
+			
+		}
+		
+		
 	}
 	
 	/** The event handler for mouse clicks
@@ -159,8 +170,24 @@ public class EarthquakeCityMap extends PApplet {
 		// TODO: Implement this method
 		// Hint: You probably want a helper method or two to keep this code
 		// from getting too long/disorganized
+		// clear the last selection
+		if (lastClicked != null) {
+			lastClicked.setClicked(false);
+			lastClicked = null;
+		
+		}
+		hideMarkers(quakeMarkers);
 	}
 	
+	public void hideMarkers(List<Marker> markers) {
+		
+		for (Marker marker: markers) {	
+			marker.setHidden(true);
+			if (marker.isInside(map, mouseX, mouseY)) {
+				lastClicked = (CommonMarker)marker;
+			}
+		}
+	}
 	
 	// loop over and unhide all markers
 	private void unhideMarkers() {
@@ -299,7 +326,7 @@ public class EarthquakeCityMap extends PApplet {
 				// checking if inside
 				if(((AbstractShapeMarker)marker).isInsideByLocation(checkLoc)) {
 					earthquake.addProperty("country", country.getProperty("name"));
-						
+					
 					// return if is inside one
 					return true;
 				}
